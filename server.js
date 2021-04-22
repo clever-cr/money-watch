@@ -3,12 +3,15 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParse from "body-parser";
 import dotenv from "dotenv";
+import incomeRouter from "./server/routes/incomeRouter.js";
 
 
 dotenv.config({ path: "./.env" });
 const app = express();
 app.use(bodyParse.json());
 
+
+app.use ('/api/v1/money/dash',incomeRouter);
 
 
 
