@@ -3,12 +3,20 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParse from "body-parser";
 import dotenv from "dotenv";
+
+import expenseRoute from "./server/routes/expensesRoute";
+import savingRoute  from "./server/routes/savingRoute"
+
 import incomeRouter from "./server/routes/incomeRouter.js";
+
 
 
 dotenv.config({ path: "./.env" });
 const app = express();
 app.use(bodyParse.json());
+
+app.use('/api/v1/money-watch',expenseRoute);
+app.use('/api/v1/money-watch',savingRoute)
 
 
 app.use ('/api/v1/money/dash',incomeRouter);
