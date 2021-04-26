@@ -3,11 +3,13 @@ const incomeSchema = new mongoose.Schema({
     
 
       userId:{
-          type:String, 
+        type:mongoose.Schema.ObjectId,
+        ref:"user",
+        required:[true,"user is required"] 
   
 
      },
-     incomes: [
+     categories: [
        {
          category:{
              type: String,

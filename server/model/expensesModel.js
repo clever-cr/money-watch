@@ -5,8 +5,9 @@ const expenseSchema = new mongoose.Schema({
     userId: {
 
 
-        type: String,
-        default: ''
+        type:mongoose.Schema.ObjectId,
+            ref:"user",
+            required:[true,"user is required"]
 
 
     },
@@ -30,5 +31,12 @@ const expenseSchema = new mongoose.Schema({
 
 
 })
+expenseSchema.pre(/^find/,function(next){
+    this.populate({
+        path:"userId",
+        select:"firstName lastName"
+    })
+    next();
+  })
 const expenseData = mongoose.model("expense", expenseSchema);
 export default expenseData;

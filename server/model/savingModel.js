@@ -3,10 +3,9 @@ import mongoose from "mongoose";
 const savingSchema = new mongoose.Schema({
 
     userId: {
-
-
-        type: String,
-        default: ''
+        type:mongoose.Schema.ObjectId,
+        ref:"user",
+        required:[true,"user is required"] 
 
 
     },
@@ -30,5 +29,12 @@ const savingSchema = new mongoose.Schema({
 
 
 })
+savingSchema.pre(/^find/,function(next){
+    this.populate({
+        path:"userId",
+        select:"firstName lastName"
+    })
+    next();
+  })
 const savingData = mongoose.model("savings", savingSchema);
 export default savingData;

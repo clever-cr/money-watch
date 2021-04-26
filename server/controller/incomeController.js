@@ -63,16 +63,26 @@ class IncomeController {
         }
         return Response.successMessage(res, " successfully deleted", Data, 201)
     }
-    static updateIncome= async (req, res) => {
+    static addCategory= async (req, res) => {
         const incomeId = req.params.id;
         let {
-            incomes,
+            
             expectedAmount,
             category,
             startBalance,
             isActive
+            
+            
         } = req.body
-        const Data = await IncomeData.findByIdAndUpdate(incomeId,req.body);
+        const Data = await IncomeData.findByIdAndUpdate(incomeId, {
+            $push: {
+                categories: {
+                    expectedAmount: expectedAmount,
+                    category: category,
+                    
+                }
+            }
+        });
         if (!Data) {
        return Response.errorMessage(res,"no income to be updated",417) 
         } 
