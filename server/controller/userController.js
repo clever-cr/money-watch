@@ -8,15 +8,8 @@ class UserController{
     static SignUp = async(req, res) =>{
 
         let{
-            firstname,
-            lastname,
-            address,
             email,
-            phonenumber,
-            gender,
-            role,
             password,
-            
         } =req.body;
           
         password = bcrypt.hashSync(password,10);
@@ -42,7 +35,6 @@ class UserController{
              
         }
 
-
     };
 
     static SignIn = async(req,res) => {
@@ -55,7 +47,7 @@ class UserController{
         if (!isUserExist){
             return Response.errorMessage(res, "login failed", 401);
         }
-        if (bcrypt.compareSync(password, isUserExist.password)){
+        if (is_passwordExist){
             const data =isUserExist;
             const token = generateUserToken({
                 id:data.id,
@@ -111,9 +103,8 @@ class UserController{
         let{
             firstname,
             lastname,
-            email,
             phonenumber,
-            gender,
+            gender
             }
              = req.body;
 
@@ -121,16 +112,14 @@ class UserController{
         const data =await userInfo.findByIdAndUpdate(userId,{
             firstName:firstname,
             lastName:lastname,
-            email:email,
             phoneNumber:phonenumber,
-            gender:gender,
+            gender:gender
         });
-        console.log(data);
+        //console.log(data);
 
         if(!data){
             return Response.errorMessage(res,"update failed",417);
             
-
         }
 
         const dataUpdated = await userInfo.findById(userId);
