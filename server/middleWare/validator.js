@@ -24,6 +24,16 @@ class Validator {
             check("password", "password must contain 8 characters").isStrongPassword(),
         ];
     }
+
+    static newUpdateUserInfo(){
+        return[
+            check("firstName", "first name must not contain special character").isAlpha(),
+            check("lastName", "last name must not contain special character ").isAlpha(),
+            check("gender", "gender should be male or female").isIn(["male","female"]),
+            check("phoneNumber", "Phone number must be number").isNumeric()
+        ];
+    };
+    
     static validateInput = (req, res, next) =>{
         const errors = validationResult(req);
          if (!errors.isEmpty()){
