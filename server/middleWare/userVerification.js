@@ -20,7 +20,7 @@ export const verifyUser = async (req, res, next) =>{
 
         if(!data)
         {
-            return Response.errorMessage(res, "Please provide credentials ", 404);
+            return Response.errorMessage(res, "Please provide valid token, user not exist ", 404);
 
         }
         if (user.passwordChangedTime !=data.passwordChangedTime){

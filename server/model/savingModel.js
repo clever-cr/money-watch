@@ -25,14 +25,21 @@ const savingSchema = new mongoose.Schema({
             }
         }
     ],
-    isActive: Boolean
+    isActive: Boolean,
 
+    transactionId: [{
+        type: mongoose.Schema.ObjectId,
+        ref:"transaction"
+    }]
 
 })
 savingSchema.pre(/^find/,function(next){
     this.populate({
         path:"userId",
         select:"firstName lastName"
+    }).populate({
+        path:"transactionId",
+        select:"transactionType amount"
     })
     next();
   })

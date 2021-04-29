@@ -68,11 +68,7 @@ class IncomeController {
         let {
             
             expectedAmount,
-            category,
-            startBalance,
-            isActive
-            
-            
+            category
         } = req.body
         const Data = await IncomeData.findByIdAndUpdate(incomeId, {
             $push: {

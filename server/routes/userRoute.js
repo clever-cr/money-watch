@@ -9,26 +9,29 @@ userRoute.post(
   "/user/signup",
   Validator.newAccountSignUpRules(),
   Validator.validateInput,
-  UserController.UserController.SignUp
+  UserController.SignUp
 );
+
 userRoute.post(
   "/user/signin",
   Validator.newLoginRules(),
   Validator.validateInput,
-   
-  UserController.UserController.SignIn
+  UserController.SignIn
 );
+
 userRoute.put(
   "/user/update-password",
   verifyUser,
-  UserController.UserController.changePassword
+  Validator.validateInput,
+  UserController.changePassword
 );
+
 userRoute.put(
   "/user/update-user-info",
   Validator.newUpdateUserInfo(),
-  Validator.validateInput,
   verifyUser,
-  UserController.UserController.updateUser
+  Validator.validateInput,
+  UserController.updateUser
 );
 
 export default userRoute;

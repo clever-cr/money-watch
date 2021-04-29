@@ -2,6 +2,7 @@ import userInfo from "../model/userModel";
 import bcrypt from "bcrypt";
 import Response from "../helpers/response";
 import { generateUserToken } from "../helpers/token";
+import EmailHelper from "../helpers/emailTemplate"
 
 class UserController{
 
@@ -31,6 +32,8 @@ class UserController{
             let { password, ...dataWithoutPassword } = data._doc;
             //console.log(password);
 
+             EmailHelper.userWelcomeEmail(dataWithoutPassword);
+            
             return Response.successMessage(res, "Account created successfully", dataWithoutPassword, 201);
              
         }
@@ -126,4 +129,4 @@ class UserController{
         return Response.successMessage(res, "Data updated successfully",dataUpdated, 200)
     };
 }
-export default { UserController };
+export default UserController;
