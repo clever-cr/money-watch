@@ -20,16 +20,15 @@ const expenseSchema = new mongoose.Schema({
 
                 type: Number,
                 required: [true, "expected amount is required"]
+            },
 
-            }
+            actualAmount:{
+                type: Number
+                
+              }
         }
     ],
     isActive: Boolean,
-
-    transactionId: [{
-        type: mongoose.Schema.ObjectId,
-        ref:"transaction"
-    }]
 
 
 })
@@ -37,9 +36,6 @@ expenseSchema.pre(/^find/,function(next){
     this.populate({
         path:"userId",
         select:"firstName lastName"
-    }).populate({
-        path:"transactionId",
-        select:"transactionType amount"
     })
     next();
   })
