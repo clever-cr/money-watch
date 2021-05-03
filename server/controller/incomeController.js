@@ -15,7 +15,7 @@ class IncomeController {
             isActive
         } = req.body
         const Data = await IncomeData.create(req.body);
-        console.log(Data);
+        // console.log(Data);
 
         if (!Data) {
             return Response.errorMessage(res, "Income failed", 417)
@@ -45,11 +45,11 @@ class IncomeController {
     static getOneIncome = async (req, res) => {
         const incomeId = req.params.id;
         const Data = await IncomeData.findById(incomeId);
-        console.log(incomeId);
-        console.log(Data);
+        //console.log(incomeId);
+        // console.log(Data);
         if (!Data) {
 
-            return Response.errorMessage(res, "doesn't get it", 417)
+            return Response.errorMessage(res, "No income available to be displayed", 417)
 
         }
         return Response.successMessage(res, "successfully done", Data, 200)

@@ -16,6 +16,14 @@ class expenseController {
         const Data = await expenseData.find();
         return Response.successMessage(res, "all expenses", Data, 201)
     }
+    static getOneExpenses = async (req, res) => {
+        const expenseId = req.params.id;
+        const data = await expenseData.findById(expenseId);
+        if (!data) {
+            return Response.errorMessage(res, "no expense", 201)
+        }
+        return Response.successMessage(res, "this is one expense", data, 201)
+    }
 
     static deleteOneExpenses = async (req, res) => {
         const expenseId = req.params.id;
@@ -25,14 +33,7 @@ class expenseController {
         }
         return Response.successMessage(res, "deleted all expenses successfully", data, 201)
     }
-    static getOneExpenses = async (req, res) => {
-        const expenseId = req.params.id;
-        const data = await expenseData.findByIdAndDelete(expenseId);
-        if (!data) {
-            return Response.errorMessage(res, "no expense", 201)
-        }
-        return Response.successMessage(res, "this is one expense", data, 201)
-    }
+    
 
     static addCategory = async (req, res) => {
         const expenseId = req.params.id;

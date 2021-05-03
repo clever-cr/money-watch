@@ -45,11 +45,11 @@ class UserController{
 
         const isUserExist = await userInfo.findOne({ email:email});
 
-        const is_passwordExist = bcrypt.compareSync(password, isUserExist.password);
-
         if (!isUserExist){
             return Response.errorMessage(res, "login failed", 401);
         }
+        const is_passwordExist = bcrypt.compareSync(password, isUserExist.password);
+      
         if (is_passwordExist){
             const data =isUserExist;
             const token = generateUserToken({
@@ -104,21 +104,21 @@ class UserController{
     static updateUser =  async (req, res) =>{
         
         let{
-            firstname,
-            lastname,
-            phonenumber,
+            firstName,
+            lastName,
+            phoneNumber,
             gender
             }
              = req.body;
 
         const userId = req.body.userId;
         const data =await userInfo.findByIdAndUpdate(userId,{
-            firstName:firstname,
-            lastName:lastname,
-            phoneNumber:phonenumber,
+            firstName:firstName,
+            lastName:lastName,
+            phoneNumber:phoneNumber,
             gender:gender
         });
-        //console.log(data);
+        //  console.log(data);
 
         if(!data){
             return Response.errorMessage(res,"update failed",417);

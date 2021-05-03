@@ -16,12 +16,12 @@ const incomeSchema = new mongoose.Schema({
               type: Number,
             required:[true,"Amount is required"]
         } ,
+        actualAmount:{
+          type: Number
+        }
       }
     ],
-    transactionId: [{
-      type: mongoose.Schema.ObjectId,
-      ref:"transaction"
-  }],
+   
     startBalance: Number,
     isActive:{
       type:Boolean,
@@ -32,9 +32,6 @@ incomeSchema.pre(/^find/,function(next){
   this.populate({
       path:"userId",
       select:"firstName lastName"
-  }).populate({
-        path:"transactionId",
-        select:"transactionType amount"
   })
   next();
 })
