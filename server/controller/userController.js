@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import Response from "../helpers/response";
 import { generateUserToken } from "../helpers/token";
 import EmailHelper from "../helpers/emailTemplate"
+import sendSms from "../helpers/SMS";
+
 
 class UserController{
 
@@ -33,7 +35,11 @@ class UserController{
             //console.log(password);
 
              EmailHelper.userWelcomeEmail(dataWithoutPassword);
-            
+             console.log(dataWithoutPassword);            
+
+             sendSms(dataWithoutPassword.phoneNumber, dataWithoutPassword.firstName);
+           
+
             return Response.successMessage(res, "Account created successfully", dataWithoutPassword, 201);
              
         }

@@ -27,14 +27,14 @@ let transTotalIncome=0;
 let transTotalSaving=0;
 
     transData.forEach(element => {
-        
+        console.log(element);
         if(element.transactionType==="expense")
         transTotalExpense= transTotalExpense+element.amount;
         if(element.transactionType==="income")
         transTotalIncome= transTotalIncome+element.amount;
         if(element.transactionType==="savings")
         transTotalSaving= transTotalSaving+element.amount;
-        console.log(transTotalExpense)
+        // console.log(transTotalExpense)
     });
   
 return Response.successMessage(
@@ -45,19 +45,19 @@ return Response.successMessage(
       201
     );
 
-    // const updatedTransact= await transactionData.findById(expenseCategoryId);
+  //   const updatedTransact= await transactionData.findById(expenseCategoryId);
 
-    // const updatedTransExpenses = updatedTransact.expectedAmount;
+  //   const updatedTransExpenses = updatedTransact.expectedAmount;
 
-    // let transactionTotalExpense=0;
-    // let transactionTotalIncome=0;
-    // let transactionTotalSaving=0;
+  //   let transactionTotalExpense=0;
+  //   let transactionTotalIncome=0;
+  //   let transactionTotalSaving=0;
 
-    // updatedTransExpenses.forEach(element=>{
+  //   updatedTransExpenses.forEach(element=>{
 
-    //   transactionTotalExpense= element.expectedAmount-transactionTotalExpense
+  //     transactionTotalExpense= element.expectedAmount-transactionTotalExpense
 
-    // });
+  //   });
 
   //   return Response.successMessage(res, 
   //     "Transaction added successfully",{Expense:updatedTransExpenses, actualTransaction:transactionTotalExpense },
