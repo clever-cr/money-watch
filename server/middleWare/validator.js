@@ -20,7 +20,7 @@ class Validator {
       check("gender", "gender should be male or female").isIn(["male","female",]),
       check("role", "role should be admin or user").isIn(["admin", "user"]),
       //check("address", "Address must not contain special character").isAlpha(),
-      check("phoneNumber", "Phone number must be number").isMobilePhone(),
+      // check("phoneNumber", "Phone number must be number").isNumeric(),
     ];
   }
 
@@ -35,8 +35,8 @@ class Validator {
     return [
       check("firstName","first name must not contain special character").isAlpha(),
       check("lastName","last name must not contain special character " ).isAlpha(),
-      check("gender", "gender should be male or female").isIn(["male","female", ]),
-      check("phoneNumber", "Phone number must be number").isMobilePhone(),
+      check("gender", "gender should be male or female").isIn(["male","female",]),
+      // check("phoneNumber", "Phone number must be number").isNumeric(),
     ];
   }
 
