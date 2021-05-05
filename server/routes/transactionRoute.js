@@ -13,5 +13,11 @@ transactionRoute.post(
   validator.validateTransactionType,
   transactionController.addTransaction
 );
+transactionRoute.get(
+  "/transaction/one/:id",
+  verifyUser,
+  validator.transactionRules(),
+  transactionController.getOneTransactions
+);
 
 export default transactionRoute;

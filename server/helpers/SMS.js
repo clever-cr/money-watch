@@ -7,11 +7,11 @@ const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
 export default function sendSms(phoneNumber,firstName){
-    console.log(firstName)
+    // console.log(firstName)
 
 client.messages
   .create({
-     body: 'Hello' + firstName+ 'welcome, to Money Watch. Its a good journey to go for better budgeting',
+     body: 'Hello' + firstName + 'welcome, to Money Watch. It is a good journey to go for better budgeting',
      from: '+18162538391',
      to: phoneNumber
    })

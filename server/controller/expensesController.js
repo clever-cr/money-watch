@@ -56,6 +56,7 @@ class expenseController {
         return Response.successMessage(res, "updated categories successfully", data, 200)
 
     }
+  
 }
 
 export default expenseController;
