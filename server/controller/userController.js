@@ -35,7 +35,7 @@ class UserController{
             //console.log(password);
 
              EmailHelper.userWelcomeEmail(dataWithoutPassword);
-             console.log(dataWithoutPassword);            
+            //  console.log(dataWithoutPassword);            
 
              sendSms(dataWithoutPassword.phoneNumber, dataWithoutPassword.firstName);
            
