@@ -3,12 +3,12 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParse from "body-parser";
 import dotenv from "dotenv";
-import userRoute from "../money-watch/server/routes/userRoute";
+import userRoute from "./server/routes/userRoute";
 import expenseRoute from "./server/routes/expensesRoute";
 import savingRoute  from "./server/routes/savingRoute";
 import expectRoute from "./server/routes/expectRouter";
 import incomeRouter from "./server/routes/incomeRouter.js";
-import transactionRoute from "../money-watch/server/routes/transactionRoute.js";
+import transactionRoute from "./server/routes/transactionRoute.js";
 
 
 const app = express();
