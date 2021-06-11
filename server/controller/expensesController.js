@@ -56,6 +56,27 @@ class expenseController {
         return Response.successMessage(res, "updated categories successfully", data, 200)
 
     }
+    static getOneCategory = async (req, res) => {
+        const expenseId = req.params.id;
+        let {
+            category,
+            expectedAmount
+
+        } = req.body
+        const data = await expenseData.findById(expenseId, {
+            $push: {
+                categories: {
+                    expectedAmount: expectedAmount,
+                    category: category
+                }
+            }
+        });
+        if (!data) {
+            return Response.errorMessage(res, "there is no category", 407)
+        }
+        return Response.successMessage(res, " here is one category", data, 200)
+
+    }
 }
 
 export default expenseController;
