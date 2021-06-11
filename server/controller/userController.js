@@ -34,10 +34,15 @@ class UserController{
             let { password, ...dataWithoutPassword } = data._doc;
             //console.log(password);
 
+
+             await EmailHelper.userWelcomeEmail(dataWithoutPassword);
+             console.log(dataWithoutPassword);            
+
              EmailHelper.userWelcomeEmail(dataWithoutPassword);
             //  console.log(dataWithoutPassword);            
 
-             sendSms(dataWithoutPassword.phoneNumber, dataWithoutPassword.firstName);
+
+             await sendSms(dataWithoutPassword.phoneNumber, dataWithoutPassword.firstName);
            
 
             return Response.successMessage(res, "Account created successfully", dataWithoutPassword, 201);
