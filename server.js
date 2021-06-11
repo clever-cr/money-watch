@@ -9,9 +9,11 @@ import savingRoute  from "./server/routes/savingRoute";
 import expectRoute from "./server/routes/expectRouter";
 import incomeRouter from "./server/routes/incomeRouter.js";
 import transactionRoute from "./server/routes/transactionRoute.js";
+import cors from  'cors';
 
 
 const app = express();
+app.use(cors());
 dotenv.config({ path: "./.env" });
 app.use(bodyParse.json());
 app.use('/api/v1/money-watch',expenseRoute);
