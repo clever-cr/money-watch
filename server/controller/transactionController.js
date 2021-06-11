@@ -44,25 +44,17 @@ return Response.successMessage(
         totalExpense:transTotalExpense},
       201
     );
-
-  //   const updatedTransact= await transactionData.findById(expenseCategoryId);
-
-  //   const updatedTransExpenses = updatedTransact.expectedAmount;
-
-  //   let transactionTotalExpense=0;
-  //   let transactionTotalIncome=0;
-  //   let transactionTotalSaving=0;
-
-  //   updatedTransExpenses.forEach(element=>{
-
-  //     transactionTotalExpense= element.expectedAmount-transactionTotalExpense
-
-  //   });
-
-  //   return Response.successMessage(res, 
-  //     "Transaction added successfully",{Expense:updatedTransExpenses, actualTransaction:transactionTotalExpense },
-  //      201);
   };
+  static getOneTransactions = async (req, res) => {
+    const transactionId = req.params.id;
+    const data = await transactionData.findById(transactionId);
+    
+    if (!data) {
+      return Response.errorMessage(res,"no transaction",407) 
+       } 
+
+    return Response.successMessage(res, "this is a transaction", data, 201)
+}
   
 }
 export default transactionController;

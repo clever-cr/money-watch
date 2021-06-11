@@ -56,6 +56,7 @@ class expenseController {
         return Response.successMessage(res, "updated categories successfully", data, 200)
 
     }
+
     static getOneCategory = async (req, res) => {
         const expenseId = req.params.id;
         let {
@@ -77,6 +78,9 @@ class expenseController {
         return Response.successMessage(res, " here is one category", data, 200)
 
     }
+
+  
+
 }
 
 export default expenseController;
